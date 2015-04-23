@@ -1,0 +1,15 @@
+---
+
+# openemr/Debian.yml
+
+- name: get the openemr deb installer
+  get_url: 
+   url: "https://downloads.sourceforge.net/openemr/{{openmrs_openemr_deb_file}}"
+   dest: "{{openmrs_downloads_dir}}/{{openmrs_openemr_deb_file}}"
+   force: no
+
+- name: install openemr 
+  apt: 
+   cache_valid_time: 300
+   deb: "{{openmrs_downloads_dir}}/{{openmrs_openemr_deb_file}}"
+   update_cache: yes

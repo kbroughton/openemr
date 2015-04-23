@@ -1,0 +1,94 @@
+---
+# defaults file for openemr
+
+
+##################################
+# OpenEMR 
+##################################
+
+openemr_tar_url: 'http://downloads.sourceforge.net/project/openemr/OpenEMR%20Current/{{openemr_semantic_version}}/openemr-{{openemr_semantic_version}}.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fopenemr%2F%3Fsource%3Dtyp_redirect&ts=1427213713&use_mirror=iweb'
+openemr_deb_url: 'http://sourceforge.net/projects/openemr/files/OpenEMR%20Ubuntu_debian%20Package/{{openemr_semantic_version}}/{{openemr_deb_file}}/download'
+
+openemr_semantic_version: 4.2.0
+openemr_patch: "-1"
+openemr_version: "{{openemr_semantic_version}}{{openemr_patch}}"
+openemr_deb_file: openemr_{{openemr_version}}_all.deb
+# Following installation instructions 
+# http://open-emr.org/wiki/index.php/OpenEMR_4.2.0_Ubuntu-Debian_Package_Installation
+
+
+################
+# Open EMR
+################
+
+
+# Login Password for when PHP accesses MySQL
+# database_name: openemr
+# login_name: openemr99
+# openemr99
+# MySQL root password
+# pass
+
+#### OpenEMR user ###
+# openemr_user: admin
+# openemr_pass: openemr
+# GLOBAL Setting
+
+# Configuration:
+# driver = mysql,
+# host = localhost:3306,
+# user = openemr,
+# database = openemr,
+# table prefix = gacl_Testing database connection...
+# Success! Connected to "mysql" database on "localhost:3306".
+# Testing database type...
+# Success! Compatible database type "mysql" detected!
+# Making sure database "openmrs" exists...
+# Success! Good, database "openmrs" already exists!
+# Success! First Step of Access Control Installation Successful!!!
+
+    # Your php.ini file can be found at /etc/php5/apache2/php.ini
+    # To ensure proper functioning of OpenEMR you must make sure that settings in php.ini file include "short_open_tag = On", "display_errors = Off", "register_globals = Off", "max_execution_time" set to at least 60, "max_input_time" set to at least 90, "post_max_size" set to at least 30M, and "memory_limit" set to at least "128M".
+    # In order to take full advantage of the patient documents capability you must make sure that settings in php.ini file include "file_uploads = On", that "upload_max_filesize" is appropriate for your use and that "upload_tmp_dir" is set to a correct value that will work on your system.
+
+
+# Configuration of Apache web server...
+# /etc/apache2/apache2.conf
+# The "/var/www/openemr/sites/*/documents", "/var/www/openemr/sites/*/edi" and "/var/www/openemr/sites/*/era" directories contain patient information, and it is important to secure these directories. Additionally, some settings are required for the Zend Framework to work in OpenEMR. This can be done by pasting the below to end of your apache configuration file:
+#   <Directory "/var/www/openemr">
+#       AllowOverride FileInfo
+#   </Directory>
+#   <Directory "/var/www/openemr/sites">
+#       AllowOverride None
+#   </Directory>
+#   <Directory "/var/www/openemr/sites/*/documents">
+#       order deny,allow
+#       Deny from all
+#   </Directory>
+#   <Directory "/var/www/openemr/sites/*/edi">
+#       order deny,allow
+#       Deny from all
+#   </Directory>
+#   <Directory "/var/www/openemr/sites/*/era">
+#       order deny,allow
+#       Deny from all
+#   </Directory>
+
+# If you are having difficulty finding your apache configuration file, then refer to the 'INSTALL' manual for suggestions.
+# We recommend you print these instructions for future reference.
+# Click 'continue' for further instructions.
+
+# Congratulations! OpenEMR is now installed.
+
+#     Access controls (php-GACL) are installed for fine-grained security, and can be administered in OpenEMR's admin->acl menu.
+#     Reviewing /var/www/openemr/library/classes/../../sites/default/config.php is a good idea. This file contains some settings that you may want to change.
+#     There's much information and many extra tools bundled within the OpenEMR installation directory. Please refer to openemr/Documentation. Many forms and other useful scripts can be found at openemr/contrib.
+#     To ensure a consistent look and feel through out the application using Firefox is recommended.
+#     The OpenEMR project home page, documentation, and forums can be found at http://www.open-emr.org
+#     We pursue grants to help fund the future development of OpenEMR. To apply for these grants, we need to estimate how many times this program is installed and how many practices are evaluating or using this software. It would be awesome if you would email us at drbowen@oemr.org if you have installed this software. The more details about your plans with this software, the better, but even just sending us an email stating you just installed it is very helpful.
+
+# We recommend you print these instructions for future reference. 
+
+# Support email drbowen@oemr.org 
+
+# 

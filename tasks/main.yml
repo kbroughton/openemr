@@ -1,0 +1,12 @@
+---
+# tasks file for openemr
+
+
+- include: Debian.yml
+  when: ansible_os_family == "Debian" and 
+        openemr_install_method is defined and
+        openemr_install_method != "docker"
+
+- include: openmrs_docker.yml
+  when: openemr_install_method is defined and
+        openemr_install_method == "docker"
